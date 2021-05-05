@@ -1,1 +1,30 @@
 /* Other rules */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid blue;
+}
+.logo-header {
+  border: 1px solid red;
+}
+.logo-header img {
+  width: 100px;
+}
+.navbar {
+  display: flex;
+}
+.home-hero-bg {
+  background-image: url(./hero.jpg);
+  width: 100%;
+  height: 455px;
+  background-size: cover;
+  position: relative;
+  background-position: 50%;
+}
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  border: 1px solid gray;
+  height: 700px;
+}
