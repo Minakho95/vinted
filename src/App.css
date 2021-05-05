@@ -1,4 +1,7 @@
 /* Other rules */
+p {
+  font-size: 15px;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,7 +9,7 @@
   border: 1px solid blue;
 }
 .logo-header {
-  border: 1px solid red;
+  border: 1px solid #ff0000;
 }
 .logo-header img {
   width: 100px;
@@ -25,6 +28,41 @@
 .container {
   width: 1280px;
   margin: 0 auto;
-  border: 1px solid gray;
+  height: auto;
+  padding-top: 20px;
+}
+.main-home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.home-offer {
+  width: 200px;
+  height: 300px;
+  margin-top: 20px;
+  border: 1px solid red;
+}
+.home-offer img {
+  width: 200px;
+  height: 100%;
+}
+.main-offer {
+  background-color: #eaedee;
+  display: flex;
+  justify-content: space-evenly;
   height: 700px;
+  padding-top: 30px;
+}
+.offer-left {
+  width: 300px;
+  height: 500px;
+  border: 1px solid red;
+}
+.offer-left img {
+  width: 100%;
+}
+.offer-right {
+  width: 300px;
+  height: 500px;
+  background-color: white;
 }
