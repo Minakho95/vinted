@@ -1,4 +1,10 @@
-const OfferContent = ({ data }) => {
+import { Link, Redirect } from "react-router-dom";
+
+const OfferContent = ({ data, userToken }) => {
+  const location = {
+    pathname: "/payment",
+    state: { data: data },
+  };
   return (
     <div className="main-offer">
       <div className="offer-left">
@@ -28,6 +34,13 @@ const OfferContent = ({ data }) => {
             <span>{data.product_details[4].EMPLACEMENT}</span>
           </li>
         </ul>
+        <div>
+          {userToken ? (
+            <Link to={location}> Acheter</Link>
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </div>
       </div>
     </div>
   );

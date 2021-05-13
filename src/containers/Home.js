@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Header from "../components/Header";
 import HomeContent from "../components/HomeContent";
 
 import { useState, useEffect } from "react";
@@ -21,12 +20,10 @@ const Home = () => {
     <span>Chargement...</span>
   ) : (
     <div>
-      <Header />
       <div className="home-hero-bg"></div>
       <div className="container">
         <HomeContent data={data.results} />
       </div>
-      {/* <Link to={`/offer/${id}`}> Go to Offer </Link> */}
     </div>
   );
 };
