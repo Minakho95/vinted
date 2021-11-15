@@ -15,7 +15,7 @@ const Login = ({ setUser }) => {
       event.preventDefault();
       // requête axios pour se loguer
       const response = await axios.post(
-        "https://vinted-michaels.herokuapp.com/login",
+        "https://vinted-michaels.herokuapp.com/user/login",
         {
           email: email,
           password: password,
