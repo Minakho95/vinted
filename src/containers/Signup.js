@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Signup = ({ setUser }) => {
   const [username, setUsername] = useState("");
@@ -8,17 +9,21 @@ const Signup = ({ setUser }) => {
   const [password, setPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const errorColor = "red";
 
   const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/user/signup", {
-        username: username,
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://vinted-michaels.herokuapp.com/signup",
+        {
+          username: username,
+          email: email,
+          password: password,
+        }
+      );
       if (response.data.token) {
         setUser(response.data.token);
         history.push("/");
@@ -26,46 +31,52 @@ const Signup = ({ setUser }) => {
         setErrorMessage("Une erreur est survenue.");
       }
     } catch (error) {
-      if (error.response.status === 409) {
-        setErrorMessage("email déjà existant");
-      } else {
-        setErrorMessage("Une erreur est survenue.");
+      if (error.response.status === 400) {
+        setErrorMessage(error.response.data);
       }
       console.log(error.response);
-      console.log(error.message);
     }
   };
 
   return (
-    <div style={{ padding: 50 }}>
-      <form onSubmit={handleSubmit}>
+    <div className="signup-container">
+      <h2>S'inscrire</h2>
+      <form className="signup-form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Nom d'utilisateur"
           onChange={(event) => setUsername(event.target.value)}
         />
-        <br />
         <input
           type="email"
           placeholder="Email"
           onChange={(event) => setEmail(event.target.value)}
         />
-        <br />
         <input
           type="password"
           placeholder="Mot de passe"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <br />
-        <input
-          type="checkbox"
-          checked={checkbox}
-          onChange={() => setCheckbox(!checkbox)}
-        />
-        <br />
-        <span>{errorMessage}</span>
-        <input type="submit" value="S'inscrire" />
+        <div className="checkbox-container">
+          <div className="checkbox">
+            <input
+              type="checkbox"
+              checked={checkbox}
+              onChange={() => setCheckbox(!checkbox)}
+            />
+            <span>S'inscrire à notre newsletter</span>
+          </div>
+          <p>
+            En m'inscrivant, je confirme que j'ai accepté les Termes &
+            Conditions de Vinted, avoir lu la Politique de Confidentialité, et
+            que j'ai plus de 18 ans.
+          </p>
+        </div>
+
+        <span style={{ color: errorColor }}>{errorMessage}</span>
+        <button type="submit">S'inscrire</button>
       </form>
+      <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
     </div>
   );
 };

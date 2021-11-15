@@ -1,68 +1,527 @@
 /* Other rules */
+@font-face {
+  font-family: "Maison Neue";
+  font-weight: lighter;
+  src: local("Maison Neue"), url(./fonts/Font.woff) format("woff");
+}
+body {
+  font-family: "Maison Neue";
+  margin: 0;
+}
 p {
-  font-size: 15px;
+  font-size: 16px;
+}
+h1 {
+  font-weight: 400;
+}
+button {
+  cursor: pointer;
+}
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f2f3;
+}
+/********************************************* HEADER */
+.header-content {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid red;
 }
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid blue;
+  position: fixed;
+  padding: 10px 0;
+  z-index: 2;
+  background-color: white;
+  width: 100%;
 }
-.logo-header {
-  border: 1px solid #ff0000;
+.header-container {
+  width: 1080px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
 }
 .logo-header img {
   width: 100px;
 }
-.navbar {
+.search-container {
+  width: 400px;
   display: flex;
 }
+.search-container img {
+  width: 20px;
+  position: absolute;
+  top: 22px;
+  padding-left: 5px;
+}
+.search-input {
+  font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 30px;
+  border-radius: 5px;
+  font-weight: 100;
+  border: none;
+  background-color: #f5f6f7;
+  outline: none;
+}
+.header-button {
+  height: 30px;
+  width: 115px;
+  border: 1px solid #0cadb7;
+  border-radius: 5px;
+  outline: none;
+  font-size: 12px;
+}
+.button-l-s {
+  background-color: white;
+  color: #0cadb7;
+}
+.button-s {
+  margin-right: 10px;
+}
+.button-sell {
+  background-color: #0cadb7;
+  color: white;
+}
+.button-logout {
+  color: #f17382;
+  border: 1px solid #f17382;
+}
+
+/* *****************************************SORT PRICE FILTER */
+.filter-offer {
+  width: 100%;
+  position: fixed;
+  top: 63px;
+  background-color: white;
+  z-index: 1;
+  padding: 10px 0;
+}
+.filter-container {
+  padding-top: 10px;
+  width: 720px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.range-filter {
+  width: 50%;
+}
+.react-switch {
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+/******************************************* BANER */
 .home-hero-bg {
-  background-image: url(./hero.jpg);
+  background-image: url(./banner.jpg);
   width: 100%;
   height: 455px;
   background-size: cover;
   position: relative;
   background-position: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.container {
-  width: 1280px;
+.home-hero-tear {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url(./tear.svg);
+  background-repeat: no-repeat;
+  background-position: bottom -1px right -1px;
+  background-size: contain;
+  margin-left: 50%;
+}
+.hero-container {
+  width: 1080px;
   margin: 0 auto;
-  height: auto;
-  padding-top: 20px;
 }
-.main-home {
+
+.home-hero-ready {
+  background-color: white;
+  width: 360px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: 0 0 2px rgb(17 17 17 / 24%);
+  border-radius: 3px;
+}
+.home-hero-ready button {
+  height: 45px;
+  width: 187px;
+  background-color: #0cadb7;
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  border: none;
+  padding: 0 14px;
+}
+/* HOME OFFER */
+.container {
+  width: 1080px;
+  margin: 0px auto;
+  height: auto;
+}
+.container a {
+  text-decoration: none;
+}
+.container p {
+  color: #999999;
+}
+.card-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin: 20px auto auto;
 }
-.home-offer {
+.card-container {
+  width: 200px;
+  height: 360px;
+  margin-top: 20px;
+  padding: 0 6px 16px;
+}
+.card-container img {
   width: 200px;
   height: 300px;
-  margin-top: 20px;
-  border: 1px solid red;
+  object-fit: cover;
 }
-.home-offer img {
-  width: 200px;
-  height: 100%;
+.card-detail {
+  display: flex;
+  flex-direction: column;
 }
+.card-seller {
+  color: #b9b9b9;
+}
+.card-detail span {
+  color: #b9b9b9;
+  font-size: small;
+  font-weight: lighter;
+}
+.card-detail .price {
+  color: black;
+}
+/***************************************** SINGLE OFFER */
 .main-offer {
   background-color: #eaedee;
   display: flex;
   justify-content: space-evenly;
-  height: 700px;
-  padding-top: 30px;
+  margin: 0 auto;
+  height: calc(100vh - 60px);
+  padding-top: 100px;
 }
 .offer-left {
-  width: 300px;
-  height: 500px;
-  border: 1px solid red;
+  display: block;
 }
-.offer-left img {
-  width: 100%;
+.offer-picture {
+  height: 540px;
+  object-fit: cover;
 }
 .offer-right {
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 320px;
   height: 500px;
   background-color: white;
+  padding: 20px;
+}
+.offer-list {
+  list-style-type: none;
+  padding: 0;
+}
+.offer-list li {
+  display: flex;
+  padding: 2px 0;
+}
+.offer-list span {
+  flex: 1;
+}
+.offer-list span:nth-child(odd) {
+  color: #999;
+}
+.offer-list span:nth-child(2n) {
+  color: #666;
+  text-transform: uppercase;
+}
+.offer-detail-price {
+  font-size: 24px;
+  line-height: 32px;
+}
+.divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.1);
+}
+.name {
+  font-weight: 700;
+}
+.description {
+  color: #666;
+}
+.offer-right button {
+  color: white;
+  background: #09b0ba;
+  border: 1px solid #09b0ba;
+  border-radius: 4px;
+  width: 100%;
+  height: 36px;
+  font-size: 16px;
+}
+/********************************************* SIGNUP */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 100px;
+}
+.signup-form {
+  display: flex;
+  width: 275px;
+  flex-direction: column;
+  margin: auto;
+}
+.signup-form > input {
+  border: none;
+  border-bottom: 1px solid #ececec;
+  height: 35px;
+  margin-bottom: 20px;
+  outline: none;
+  font-size: 16px;
+}
+.signup-form button {
+  background-color: #09b0ba;
+  height: 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.checkbox-container {
+  margin-top: 20px;
+  padding: 10px;
+}
+.checkbox {
+  display: flex;
+}
+.signup-form input[type="checkbox"] {
+  transform: scale(2);
+  margin-right: 20px;
+}
+.checkbox-container > p {
+  text-align: left;
+  color: #999;
+  font-size: 12px;
+}
+.signup-container a {
+  color: #09b0ba;
+  font-size: 12px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+/******************************************* PUBLISH */
+.publish-container {
+  background-color: #f5f6f7;
+  padding-top: 100px;
+}
+.publish-container > div {
+  margin: 0 auto;
+  width: 1080px;
+}
+.file-input {
+  background-color: white;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 0 2px grey;
+}
+.dashed-preview-pic {
+  border: 1px dashed #ebedee;
+  border-radius: 3px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashed-preview-pic img {
+  height: 90%;
+  margin: 0 auto;
+}
+.remove-pic-button {
+  position: relative;
+  color: #000;
+  background-color: white;
+  right: 60px;
+  bottom: 70px;
+  height: 25px;
+  width: 30px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+.input-design {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0ab1ba;
+  border-radius: 4px;
+  height: 45px;
+}
+.input-design-hidden {
+  display: none;
+}
+.label-file {
+  cursor: pointer;
+  color: #0ab1ba;
+  font-weight: 700;
+}
+.label-file > span {
+  margin: 0 10px;
+  vertical-align: middle;
+}
+.input-sign {
+  font-size: 40px;
+}
+.input-file {
+  display: none;
+}
+.text-input {
+  background-color: white;
+  margin: 20px 0;
+  box-shadow: 0 0 2px grey;
+}
+.text-single-input {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+}
+.text-input > .text-single-input:not(:last-child) {
+  height: 25px;
+  border-bottom: 1px solid #ebedee;
+}
+.text-single-input > h4 {
+  font-weight: 400;
+  margin: 0;
+  vertical-align: baseline;
+}
+.text-single-input > input {
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+}
+.text-single-input > input:focus {
+  outline: none;
+  border-bottom: 1px solid #0ab1ba;
+}
+.text-single-input > textarea {
+  width: 50%;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+}
+.text-single-input > textarea:focus {
+  outline: none;
+  border-bottom: 1px solid #0ab1ba;
+}
+.form-button {
+  display: flex;
+  justify-content: flex-end;
+}
+.button-validation {
+  background-color: #0ab1ba;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin: 50px 0;
+  padding: 12px;
+}
+/************************************************ CHECKOUT FORM */
+.payment-container {
+  background-color: #eaedee;
+  padding-top: 100px;
+  height: calc(100vh - 60px);
+}
+.payment-container > div {
+  margin: 0 auto;
+  width: 600px;
+  background-color: white;
+  padding: 20px;
+}
+.payment-title {
+  margin-bottom: 20px;
+  color: #999;
+}
+.payment-detail ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: #666;
+}
+.payment-detail ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+.payment-divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.1);
+  margin: 30px 0;
+}
+.payment-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+.payment-description {
+  font-weight: 400;
+  color: #333;
+}
+.payment-description span {
+  font-weight: bold;
+}
+.payment-field {
+  margin: 20px 0;
+}
+.payment-form button {
+  margin-top: 8px;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 22px;
+  height: 44px;
+  padding: 0 14px;
+  color: #fff;
+  border: 1px solid;
+  border-radius: 4px;
+  background: #00c06d;
+  border-color: #00c06d;
+}
+.shopping-button {
+  height: 45px;
+  width: 187px;
+  background-color: #0cadb7;
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  border: none;
+  padding: 0 14px;
 }

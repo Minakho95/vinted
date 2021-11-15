@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
@@ -9,10 +9,12 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const location = useLocation();
-  return (
+  return location.state.userToken ? (
     <Elements stripe={stripePromise}>
       <CheckoutForm data={location.state.data} />
     </Elements>
+  ) : (
+    <Redirect to="/login" />
   );
 };
 export default Payment;

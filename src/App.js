@@ -12,6 +12,7 @@ import Payment from "./containers/Payment";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  const [title, setTitle] = useState();
 
   const setUser = (token) => {
     if (token) {
@@ -22,9 +23,19 @@ function App() {
       setUserToken(null);
     }
   };
+
+  const handleSearch = (event) => {
+    setTitle(event.target.value);
+  };
   return (
     <Router>
-      <Header userToken={userToken} setUser={setUser} />
+      <Header
+        userToken={userToken}
+        setUser={setUser}
+        title={title}
+        setTitle={setTitle}
+        handleSearch={handleSearch}
+      />
       <Switch>
         <Route path="/offer/:id">
           <Offer userToken={userToken} />
@@ -42,7 +53,7 @@ function App() {
           <Payment />
         </Route>
         <Route path="/">
-          <Home />
+          <Home title={title} />
         </Route>
       </Switch>
     </Router>

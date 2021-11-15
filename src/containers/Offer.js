@@ -3,6 +3,7 @@ import OfferContent from "../components/OfferContent";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Loader from "../components/Loader";
 
 const Offer = ({ userToken }) => {
   const { id } = useParams();
@@ -11,14 +12,16 @@ const Offer = ({ userToken }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3000/offer/${id}`);
+      const response = await axios.get(
+        `https://vinted-michaels.herokuapp.com/offer/${id}`
+      );
       setData(response.data);
       setIsLoading(false);
     };
     fetchData();
   }, []);
   return isLoading ? (
-    <span>Chargement...</span>
+    <Loader />
   ) : (
     <div>
       <div>
